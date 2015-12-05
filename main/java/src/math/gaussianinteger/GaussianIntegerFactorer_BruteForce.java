@@ -24,10 +24,11 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 			System.out.println(positiveDivisor);
 		}
 		
-		GaussianInteger sum = factorer.getPositiveDivisorsSum(new GaussianInteger(3185, 2912));
+		GaussianInteger sum = GaussianIntegerCalculator.sum(positiveDivisors);
 		System.out.println("Sum: " + sum);
 	}
-	
+
+	@Override
 	public Collection<GaussianInteger> getPositiveDivisors(GaussianInteger number){
 		Set<GaussianInteger> positiveDivisors = new HashSet<GaussianInteger>();
 		positiveDivisors.add(new GaussianInteger(1, 0));
@@ -48,14 +49,9 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 		}
 		return positiveDivisors;
 	}
-	
-	private GaussianInteger getPositiveDivisorsSum(GaussianInteger number){
-		int a = 0;
-		int b = 0;
-		for(GaussianInteger factor: getPositiveDivisors(number)){
-			a += factor.getA();
-			b += factor.getB();
-		}
-		return new GaussianInteger(a, b);
+
+	@Override
+	public GaussianInteger getPositiveDivisorsSum(GaussianInteger number) {
+		return GaussianIntegerCalculator.sum(getPositiveDivisors(number));
 	}
 }
