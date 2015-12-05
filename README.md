@@ -1,2 +1,7 @@
 # perfect-gaussian
-Math library with goal of discovering a perfect Gaussian integer.
+
+Inspired by Ed Pegg Jr's [Neglected Gaussian Integers](http://www.mathpuzzle.com/Gaussians.html) page, perfect-gaussian is a Java math library with goals of discovering:
+* a perfect Gaussian integer
+* amicable Gaussian integers
+* a Gaussian aliquot sequence
+
