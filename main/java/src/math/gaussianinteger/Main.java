@@ -1,6 +1,7 @@
 package math.gaussianinteger;
 
 
+
 public class Main {
 
 	private static GaussianInteger one = new GaussianInteger(1, 0);
@@ -9,8 +10,11 @@ public class Main {
 	private GaussianIntegerComparator gaussianIntegerComparator;
 	
 	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
 		Main main = new Main(new GaussianIntegerFactorer_BruteForce());
 		main.testGaussians(2, 200);
+		long endTime = System.currentTimeMillis();
+		System.out.println("Total time: " + (endTime - startTime));
 	}
 	
 	public Main(GaussianIntegerFactorer gaussianIntegerFactorer) {
