@@ -30,7 +30,7 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 		}
 		
 		GaussianInteger sum = GaussianIntegerCalculator.sum(positiveDivisors);
-		logger.debug("Sum: " + sum);
+		logger.debug("Sum: {}", sum);
 	}
 
 	@Override
