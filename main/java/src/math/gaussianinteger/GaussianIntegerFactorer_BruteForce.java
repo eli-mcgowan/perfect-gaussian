@@ -7,7 +7,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactorer {
+
+	private static Logger logger = LogManager.getLogger();
 	
 	/**
 	 * This main method does a simple test of a known factoring and prints the result.
@@ -21,11 +26,11 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 		Collections.sort(positiveDivisors, new GaussianIntegerComparator());
 		
 		for(GaussianInteger positiveDivisor: positiveDivisors){
-			System.out.println(positiveDivisor);
+			logger.debug(positiveDivisor);
 		}
 		
 		GaussianInteger sum = GaussianIntegerCalculator.sum(positiveDivisors);
-		System.out.println("Sum: " + sum);
+		logger.debug("Sum: " + sum);
 	}
 
 	@Override
