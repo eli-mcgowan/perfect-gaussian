@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.criterion.Restrictions;
 
-public class GaussianIntegerDivisorsSum_HibernateDAO {
+public class GaussianIntegerDivisorsSum_HibernateDAO implements GaussianIntegerDivisorsSumDAO {
 	
 	private static SessionFactory factory;
 	
@@ -24,10 +24,8 @@ public class GaussianIntegerDivisorsSum_HibernateDAO {
 	         throw new ExceptionInInitializerError(ex); 
 	      }
 	}
-
-
-
-	/* Method to LOAD a new GaussianIntegerDivisorsSum in the database */
+	
+	@Override
 	public GaussianIntegerDivisorsSum load(GaussianInteger gaussianInteger) {
 		GaussianIntegerDivisorsSum sum = null;
 		Session session = factory.openSession();
@@ -43,9 +41,9 @@ public class GaussianIntegerDivisorsSum_HibernateDAO {
 		}
 		return sum;
 	}
-	
-	/* Method to SAVE a new GaussianIntegerDivisorsSum in the database */
-	public Long save(GaussianIntegerDivisorsSum gaussianIntegerDivisorsSum) {
+
+	@Override
+	public void save(GaussianIntegerDivisorsSum gaussianIntegerDivisorsSum) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Long gaussianId = null;
@@ -60,6 +58,5 @@ public class GaussianIntegerDivisorsSum_HibernateDAO {
 		} finally {
 			session.close();
 		}
-		return gaussianId;
 	}
 }

@@ -1,5 +1,9 @@
 package math.gaussianinteger;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,11 +18,10 @@ public class Main {
 	private GaussianIntegerComparator gaussianIntegerComparator;
 	
 	public static void main(String[] args) {
-		long startTime = System.currentTimeMillis();
+		//Main main = new Main(new GaussianIntegerFactorer_Hibernate(new GaussianIntegerFactorer_BruteForce()));
+		//Main main = new Main(new GaussianIntegerFactorer_DAO(new GaussianIntegerDivisorsSum_RAM_DAO(), new GaussianIntegerFactorer_BruteForce()));
 		Main main = new Main(new GaussianIntegerFactorer_BruteForce());
-		main.testGaussians(2, 200);
-		long endTime = System.currentTimeMillis();
-		logger.info("Total time: {}", + (endTime - startTime));
+		main.testGaussians(2, 1000);
 	}
 	
 	public Main(GaussianIntegerFactorer gaussianIntegerFactorer) {
@@ -27,6 +30,7 @@ public class Main {
 	}
 	
 	public void testGaussians(int startNum, int endNum){
+		long startTime = System.currentTimeMillis();
 		for(long max = startNum; max <= endNum; max++){
 			logger.info("Testing: {}", max);
 			for(long i=0; i<max; i++){
@@ -34,7 +38,54 @@ public class Main {
 				testGaussian(i, max);
 			}
 			testGaussian(max, max);
+			long currentTime = System.currentTimeMillis();
+			logger.info("Total time: {} / {}", + (currentTime - startTime), getNiceTime(currentTime - startTime));
 		}
+		long endTime = System.currentTimeMillis();
+		logger.info("Total time: {} / {}", + (endTime - startTime), getNiceTime(endTime - startTime));
+	}
+	
+	/**
+	 * Uses multiple processors to during the tests. 
+	 * 4 processors was about 3 times as fast as 1 but had me worried about burning out my home PC.
+	 * 
+	 */
+	public void testGaussians_MultiCore(int startNum, int endNum){
+		int numProcessors = Runtime.getRuntime().availableProcessors();
+		logger.info("Using {} processors.", numProcessors);
+		long startTime = System.currentTimeMillis();
+		for(long max = startNum; max <= endNum; max++){ExecutorService exec = Executors.newFixedThreadPool(numProcessors);
+			logger.info("Using {} processors.", numProcessors);
+			logger.info("Testing: {}", max);
+			final int localMax = (int)max;
+			for(long i=0; i<max; i++){
+				final int localI = (int)i;
+				exec.submit(new Runnable(){
+					@Override
+					public void run() {
+						testGaussian(localMax, localI);
+						testGaussian(localI, localMax);
+					}
+				});
+			}
+			exec.submit(new Runnable(){
+				@Override
+				public void run() {
+					testGaussian(localMax, localMax);
+				}
+			});
+			testGaussian(max, max);
+			exec.shutdown();
+			try {
+				exec.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+			} catch (InterruptedException e) {
+			  logger.error(e);
+			}
+			long currentTime = System.currentTimeMillis();
+			logger.info("Total time: {} / {}", + (currentTime - startTime), getNiceTime(currentTime - startTime));
+		}
+		long endTime = System.currentTimeMillis();
+		logger.info("Total time: {} / {}", + (endTime - startTime), getNiceTime(endTime - startTime));
 	}
 
 	public void testGaussian(long a, long b){
@@ -90,5 +141,28 @@ public class Main {
 			return;
 		}
 		findAliquotCycle(startNumber, sum);
+	}
+	
+	public String getNiceTime(final long durationInMillis){
+		long millis = durationInMillis % 1000;
+		long durationInSeconds = durationInMillis / 1000;
+		long seconds = durationInSeconds % 60;
+		long durationInMinutes = durationInSeconds / 60;
+		long minutes = durationInMinutes % 60;
+		long hours = durationInMinutes / 60;
+		StringBuilder sb = new StringBuilder();
+		if(hours > 0){
+			sb.append(hours).append("h ");
+		}
+		if(hours > 0 || minutes > 0){
+			sb.append(minutes).append("m ");
+		}
+		if(hours > 0 || minutes > 0 || seconds > 0){
+			sb.append(seconds).append("s ");
+		}
+		if(hours > 0 || minutes > 0 || seconds > 0 || millis > 0){
+			sb.append(millis).append("millis ");
+		}
+		return sb.toString();
 	}
 }
