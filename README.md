@@ -9,15 +9,15 @@ Some free Amazon Servers have been set up (t2.micro, Windows Server 2012 R2) and
 
 Low Range | High Range | Completed | Time | Instance
 ----------|------------|-----------|------|---------
-2 | 699 | Yes | 14h 14m 38s | 1 - PerfectGaussian
+2 | 699 | Yes | 14h 14m 38s | Windows 1043ac3 (Dec 21)
 700 | 799 | NO | | 
-800 | 899 | Yes | 20h 23m 44s | 1 - PerfectGaussian
-900 | 999 | Yes | 21h 49m 35s | 2 - PerfectGaussian
-1000 | 1099 | Yes | 28h 54m 40s | 3 - PerfectGaussian
-1100 | 1199 | Yes | 32h 49m 39s | 4 - PerfectGaussian
-1200 | 1299 | In Progress (1279) |  41h 42m 30s | 5 - PerfectGaussian
-1300 | 1399 | In Progress (1329) | 19h 11m 6s | 1 - PerfectGaussian
-1400 | 1499 | In Progress (1423) | 19h 35m 36s  | 2 - PerfectGaussian
-1500 | 1599 | In Progress (1519) | 14h 58m 6s  | 6 - PerfectGaussian
-1600 | 1699 | In Progress (1613) | 5h 33m 35s  | 3 - PerfectGaussian
-1700 | 1799 | In Progress (1705) | 5h 26m 39s  | 4 - PerfectGaussian
+800 | 899 | Yes | 20h 23m 44s | Windows 1043ac3 (Dec 21)
+900 | 999 | Yes | 21h 49m 35s | Windows 1043ac3 (Dec 21)
+1000 | 1099 | Yes | 28h 54m 40s | Windows 1043ac3 (Dec 21)
+1100 | 1199 | Yes | 32h 49m 39s | Windows 1043ac3 (Dec 21)
+1200 | 1299 | In Progress (1279) |  41h 42m 30s | Windows 1043ac3 (Dec 21)
+1300 | 1399 | In Progress (1329) | 19h 11m 6s | Windows 1043ac3 (Dec 21)
+1400 | 1499 | In Progress (1423) | 19h 35m 36s  | Windows 1043ac3 (Dec 21)
+1500 | 1599 | In Progress (1519) | 14h 58m 6s  | Windows 1043ac3 (Dec 21)
+1600 | 1699 | In Progress (1613) | 5h 33m 35s  | Windows 1043ac3 (Dec 21)
+1700 | 1799 | In Progress (1705) | 5h 26m 39s  | Windows 1043ac3 (Dec 21)
