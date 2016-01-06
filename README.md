@@ -5,4 +5,4 @@ Inspired by Ed Pegg Jr's [Neglected Gaussian Integers](http://www.mathpuzzle.com
 * amicable Gaussian integers
 * a Gaussian aliquot cycle
 
-For Current Progress see the Wiki home page.
+For Current Progress see the [Wiki home page](/wiki).
