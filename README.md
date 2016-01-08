@@ -7,7 +7,7 @@ Inspired by Ed Pegg Jr's [Neglected Gaussian Integers](http://www.mathpuzzle.com
 
 ### Current Status
 
-Factoring Gaussian Integers using the brute force aproach is incredibly slow, so a faster algorithm would be a massive improvement. For example, when factoring integers an improvement would be to only test numbers up to and including the square root of the integer. If there is a similar concept available to find the positive divisors of a Gaussian Integer, that would be incredibly helpful.
+Factoring Gaussian Integers using the brute force approach is incredibly slow, so a faster algorithm would be a massive improvement. For example, when factoring integers an improvement would be to only test numbers up to and including the square root of the integer. If there is a similar concept available to find the positive divisors of a Gaussian Integer, that would be incredibly helpful.
 
 ###### The brute force approach:
     For Gaussian Integer (A + Bi) the code is testing every Gaussian integer a + bi for 
