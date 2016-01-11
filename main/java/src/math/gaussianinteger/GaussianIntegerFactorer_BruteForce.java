@@ -20,15 +20,15 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 	 */
 	public static void main(String[] args) {
 		GaussianIntegerFactorer_BruteForce factorer = new GaussianIntegerFactorer_BruteForce();
-		factorer.getPositiveDivisors(new GaussianInteger(3185, 2912));
 		
-		List<GaussianInteger> positiveDivisors = new ArrayList<GaussianInteger>(factorer.getPositiveDivisors(new GaussianInteger(3185, 2912)));
+		GaussianInteger testNum = new GaussianInteger(19, 5);
+		List<GaussianInteger> positiveDivisors = new ArrayList<GaussianInteger>(factorer.getPositiveDivisors(testNum));
 		Collections.sort(positiveDivisors, new GaussianIntegerComparator());
 		
 		for(GaussianInteger positiveDivisor: positiveDivisors){
 			logger.debug(positiveDivisor);
 		}
-		
+
 		GaussianInteger sum = GaussianIntegerCalculator.sum(positiveDivisors);
 		logger.debug("Sum: {}", sum);
 	}
@@ -43,6 +43,7 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 				GaussianInteger factor1 = new GaussianInteger(i, j);
 				GaussianInteger factor2 = GaussianIntegerCalculator.quotient(number, factor1);
 				if(factor2 != null){
+					// System.out.println(factor1 + " / " + factor2);
 					if(factor1.getA() >= 0 && factor1.getB() >= 0){
 						positiveDivisors.add(factor1);
 					}
