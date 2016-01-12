@@ -18,25 +18,25 @@ public class Main {
 	private GaussianIntegerComparator gaussianIntegerComparator;
 	
 	public static void main(String[] args) {
-		if(args.length != 2){
-			throw new IllegalArgumentException("Start number and end number required.");
-		}
-		
-		int startNum = Integer.parseInt(args[0]);
-		int endNum = Integer.parseInt(args[1]);
-		
-		if(startNum < 2 || endNum < 2){
-			throw new IllegalArgumentException("Start number and end number must b greater than 2");
-		}
-		
-		if(startNum > endNum){
-			throw new IllegalArgumentException("Start number must be less than or equal to end number.");
-		}
+//		if(args.length != 2){
+//			throw new IllegalArgumentException("Start number and end number required.");
+//		}
+//		
+//		int startNum = Integer.parseInt(args[0]);
+//		int endNum = Integer.parseInt(args[1]);
+//		
+//		if(startNum < 2 || endNum < 2){
+//			throw new IllegalArgumentException("Start number and end number must b greater than 2");
+//		}
+//		
+//		if(startNum > endNum){
+//			throw new IllegalArgumentException("Start number must be less than or equal to end number.");
+//		}
 		
 		//Main main = new Main(new GaussianIntegerFactorer_Hibernate(new GaussianIntegerFactorer_BruteForce()));
 		//Main main = new Main(new GaussianIntegerFactorer_DAO(new GaussianIntegerDivisorsSum_RAM_DAO(), new GaussianIntegerFactorer_BruteForce()));
-		Main main = new Main(new GaussianIntegerFactorer_BruteForce());
-		main.testGaussians(startNum, endNum);
+		Main main = new Main(new GaussianIntegerFactorer_SquareRoot());
+		main.testGaussians(2, 1000);
 	}
 	
 	public Main(GaussianIntegerFactorer gaussianIntegerFactorer) {
