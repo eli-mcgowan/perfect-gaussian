@@ -20,8 +20,9 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 	 */
 	public static void main(String[] args) {
 		GaussianIntegerFactorer_BruteForce factorer = new GaussianIntegerFactorer_BruteForce();
-		
-		GaussianInteger testNum = new GaussianInteger(19, 5);
+
+		GaussianInteger testNum = new GaussianInteger(528, 519);
+		//GaussianInteger testNum = new GaussianInteger(3185, 2912);
 		List<GaussianInteger> positiveDivisors = new ArrayList<GaussianInteger>(factorer.getPositiveDivisors(testNum));
 		Collections.sort(positiveDivisors, new GaussianIntegerComparator());
 		
@@ -31,6 +32,7 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 
 		GaussianInteger sum = GaussianIntegerCalculator.sum(positiveDivisors);
 		logger.debug("Sum: {}", sum);
+		//System.out.println("Sum: " + sum);
 	}
 
 	@Override
@@ -38,16 +40,22 @@ public class GaussianIntegerFactorer_BruteForce implements GaussianIntegerFactor
 		Set<GaussianInteger> positiveDivisors = new HashSet<GaussianInteger>();
 		positiveDivisors.add(new GaussianInteger(1, 0));
 		long maxFactor = Math.max(number.getA(), number.getB()) - 1;
-		for(long i=1; i<=maxFactor; i++){
-			for(long j=1; j<=maxFactor; j++){
+		for(long i=0; i<=maxFactor; i++){
+			for(long j=0; j<=maxFactor; j++){
+				if(i==0 && j ==0){
+					continue;
+				}
+				if(i==1 && j ==0){
+					continue;
+				}
 				GaussianInteger factor1 = new GaussianInteger(i, j);
 				GaussianInteger factor2 = GaussianIntegerCalculator.quotient(number, factor1);
 				if(factor2 != null){
-					// System.out.println(factor1 + " / " + factor2);
-					if(factor1.getA() >= 0 && factor1.getB() >= 0){
+					//System.out.println(factor1 + " * " + factor2);
+					if(factor1.getA() > 0 && factor1.getB() >= 0){
 						positiveDivisors.add(factor1);
 					}
-					if(factor2.getA() >= 0 && factor2.getB() >= 0){
+					if(factor2.getA() > 0 && factor2.getB() >= 0){
 						positiveDivisors.add(factor2);
 					}
 				}
