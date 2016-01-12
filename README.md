@@ -14,6 +14,9 @@ A new Factorer that tests a much smaller subset of factors has been created. It 
     0 <= a <= sqrt(A + B)
     0 <= b <= sqrt(A + B)
     
+There is an additional trick to this. If (a + bi) divides (A + Bi) and the result is (x - yi), then (y + xi) is also a factor. 
+TODO: PROOF
+    
 Originally, I tried "0 <= a <= (sqrt(max(A, B)) + 1)" and "0 <= b <= (sqrt(max(A, B)) + 1)" but this doesn't work for 528 + 519i, where (sqrt(max(A, B)) + 1)=23.9. This would miss 3 + 24i and 19 + 24i.
 
 
